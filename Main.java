@@ -1,18 +1,32 @@
-package GBJava;
+package java2;
 
-import GBJava.vechicles.Car;
-import GBJava.vechicles.Vehicle;
+import java2.station.FillingStation;
+import java2.vehicle.Bus;
+import java2.vehicle.Car;
+import java2.vehicle.Truck;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        FillingStation fuelStation = new FillingStation();
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        executorService.submit(new Car("BMW", 25, 2.5F, fuelStation));
+        executorService.submit(new Car("TOYOTA", 25, 2.5F, fuelStation));
+        executorService.submit(new Car("MERCEDES", 25, 2.5F, fuelStation));
+        executorService.submit(new Car("HONDA", 25, 2.5F, fuelStation));
+        executorService.submit(new Truck("VOLVO", 60, 15F, fuelStation));
+        executorService.submit(new Truck("RENAULT", 60, 15F, fuelStation));
+        executorService.submit(new Truck("KAMAZ", 60, 15F, fuelStation));
+        executorService.submit(new Bus("PAZ", 40, 7.5F, fuelStation));
+        executorService.submit(new Car("UZDEO", 40, 7.5F, fuelStation));
+        executorService.submit(new Car("Hyundai", 40, 7.5F, fuelStation));
 
-        Vehicle vehicle = new Vehicle("Motor", 10F, 2.5F);
-//        vehicle.active();
-        Car car = new Car("BMW", 13F,2.5F);
-//        car.active();
-        new Thread(() -> car.active()).start();
-        new Thread(() -> vehicle.active()).start();
+
+
+        executorService.shutdown();
     }
 }
