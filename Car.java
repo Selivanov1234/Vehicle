@@ -1,9 +1,10 @@
-package GBJava.vechicles;
+package java2.vehicle;
+
+import java2.station.FillingStation;
 
 public class Car extends Vehicle {
-
-    public Car(String name, float maxFuel, float fuelConsumption) {
-        super(name, maxFuel, fuelConsumption);
+    public Car(String name, float maxFuel, float fuelConsumption, FillingStation fillingStation) {
+        super(name, maxFuel, fuelConsumption, fillingStation);
     }
 
     @Override
